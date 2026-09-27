@@ -1,0 +1,37 @@
+[project]
+name = "journal-kb"
+version = "0.1.0"
+description = "reMarkable bullet journal pages -> LLM wiki, vector search, MCP server and daily digest"
+readme = "README.md"
+authors = [
+    { name = "Andrew", email = "andrew.tavares87@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "anthropic>=1.8.0",
+    "httpx>=0.28.1",
+    "mcp>=2.2.0",
+    "pydantic>=2.13.5",
+    "pymupdf>=1.28.2",
+    "sqlite-vec>=0.1.9",
+]
+
+[project.scripts]
+journal-kb = "journal_kb.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.16.9",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore:builtin type swig:DeprecationWarning"]
+
+[tool.ruff]
+line-length = 120
