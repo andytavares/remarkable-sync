@@ -1,0 +1,62 @@
+tests/test_wiki.py
+  s_885559daa888ab::t_2237c3d6dd1edc 1-87
+  s_885559daa888ab::t_40cc93377e70ab 88-111
+tests/test_ingest.py
+  s_885559daa888ab::t_30066c0be5989e 1-143
+  s_885559daa888ab::t_584429dad11137 144-164
+tests/conftest.py
+  s_885559daa888ab::t_4e5ce6ccf5738f 1-109
+src/journal_kb/wiki.py
+  s_885559daa888ab::t_792350cd573bf7 1-222
+  s_885559daa888ab::t_8c6bea9b9fa382 223-230
+src/journal_kb/signals.py
+  s_885559daa888ab::t_937d00046326dc 1-18
+tests/test_signals.py
+  s_885559daa888ab::t_2ca14fbac3c8ea 1-19
+src/journal_kb/pdf.py
+  s_885559daa888ab::t_468bdaa9fe45dd 1-25
+tests/test_reader.py
+  s_885559daa888ab::t_417a7780af9cc1 1-62
+  s_885559daa888ab::t_18191e7db4912e 63-66
+src/journal_kb/store.py
+  s_885559daa888ab::t_e176840613d9f2 1-87,94-215
+  s_885559daa888ab::t_08455572e9d7fd 88-93
+  s_885559daa888ab::t_32de281b651240 216-248
+tests/test_mover.py
+  s_885559daa888ab::t_381b3187b0ed11 1-42
+config.example.toml
+  s_885559daa888ab::t_a974551f1c3a09 1-59
+src/journal_kb/embed.py
+  s_885559daa888ab::t_9d98e3dba95df9 1-28
+src/journal_kb/mover.py
+  s_885559daa888ab::t_7a67f0e16938e1 1-31
+src/journal_kb/ingest.py
+  s_885559daa888ab::t_8ed5c3468ffa15 1-125
+  s_885559daa888ab::t_b2354af61b1490 126-148
+src/journal_kb/reader.py
+  s_885559daa888ab::t_f66b4067476025 1-113
+tests/test_config.py
+  s_885559daa888ab::t_6bf57ab31b1c8a 1-43
+tests/test_pdf.py
+  s_885559daa888ab::t_b876a9f1d7e5eb 1-27
+src/journal_kb/models.py
+  s_885559daa888ab::t_e0997af2edeb56 1-35
+src/journal_kb/config.py
+  s_885559daa888ab::t_b0378c2698cdb8 1-136
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "2066414a7f1d7288c7994704c12825bd496550b3",
+  "prompts": {},
+  "sessions": {
+    "s_885559daa888ab": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "404ab22e-8ddf-4209-a9b7-7292941805ca",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Andrew <andrew.tavaes87@gmail.com>"
+    }
+  }
+}
