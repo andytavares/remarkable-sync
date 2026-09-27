@@ -1,0 +1,59 @@
+# journal-kb configuration. Copy to ~/.config/journal-kb/config.toml and edit.
+# Every key is optional; the values below are the defaults unless marked "example".
+
+[paths]
+wiki_root = "~/Google Drive/My Drive/llm-wiki"   # the LLM wiki; journal-kb reads raw/notebooks/ and writes wiki/
+drive_root = "~/Google Drive/My Drive"           # where tablet uploads land (reMarkable always uploads to the Drive root)
+state_dir = "~/.local/share/journal-kb"          # SQLite + vector index + logs; keep it OUTSIDE Google Drive
+
+# Which uploaded PDFs are notebooks, matched on the file name without ".pdf" (shell-style wildcards).
+# kind "one_on_one" is indexed for search but never written into the wiki.
+[[notebooks]]
+match = "* Journal"
+kind = "journal"
+
+[[notebooks]]
+match = "1:1 *"
+kind = "one_on_one"
+
+[[notebooks]]
+match = "Architecture"
+kind = "architecture"
+
+[[notebooks]]
+match = "Future Log"
+kind = "future_log"
+
+[reader]
+model = "claude-sonnet-5"
+dpi = 150                          # page render resolution sent to Claude
+api_key_keychain_service = ""      # example: "journal-kb-anthropic" to read the API key from the macOS keychain
+
+[embed]
+ollama_url = "http://localhost:11434"
+model = "nomic-embed-text"
+dimensions = 768                   # must match the model; changing it needs a fresh state.db
+document_prefix = "search_document: "
+query_prefix = "search_query: "
+
+[move]
+enabled = true                     # `journal-kb run` moves Drive-root uploads into raw/notebooks first
+min_age_seconds = 60               # leave files alone until Drive has finished writing them
+
+[digest]
+outputs = ["wiki", "morning"]      # any of "wiki", "morning", "email"
+include_one_on_ones = false        # true puts 1:1 tasks into the digest (and so into the wiki page)
+
+[digest.email]
+to = ""                            # example: "you@gmail.com"; required when outputs includes "email"
+username = ""                      # SMTP login; defaults to `to`
+smtp_host = "smtp.gmail.com"
+smtp_port = 465
+password_keychain_service = "journal-kb-smtp"
+
+[signals]
+similarity = 0.68                  # cosine similarity for "the same signal again"; see README, Tuning
+window_days = 30
+
+[web]
+port = 8765
