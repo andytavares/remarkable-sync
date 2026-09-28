@@ -130,6 +130,8 @@ how well Claude reads *your* handwriting, what a page costs, and what Drive does
    ```bash
    JOURNAL_KB_LIVE_PDF="$HOME/Google Drive/My Drive/2026-09 Journal.pdf" uv run pytest -k live_read -s
    ```
+   It reads page 3 by default (page 1 is the Key, page 2 the Monthly Log). Pick another with
+   `JOURNAL_KB_LIVE_PAGE=5`. It prints the structured read and its token counts.
    This uses the same credential lookup as the pipeline, so set up the [Claude credential](#claude-credential)
    first. Without one it fails with `Could not resolve authentication method`.
 4. **Run the whole pipeline once:**

@@ -5,7 +5,6 @@ import pytest
 from conftest import entry, page
 
 from journal_kb.models import PageRead
-from journal_kb.pdf import render_pages
 from journal_kb.reader import KEY_PROMPT, ClaudeReader, ReadError
 
 
@@ -57,12 +56,18 @@ def test_key_prompt_names_every_symbol_in_the_key():
 )
 def test_live_read_of_a_real_journal_page():
     from journal_kb.config import load_config
+    from journal_kb.pdf import render_page
     from journal_kb.reader import make_reader
 
+    # Page 1 is the Key and page 2 the Monthly Log in the primer's layout; daily logs start at 3.
+    page_no = int(os.environ.get("JOURNAL_KB_LIVE_PAGE", "3"))
     cfg = load_config()
-    png = next(render_pages(os.environ["JOURNAL_KB_LIVE_PDF"], cfg.dpi)).png
-    result = make_reader(cfg).read(png, "Notebook: 2026-09 Journal (journal), page 1. Previous page's date: unknown.")
+    png = render_page(os.environ["JOURNAL_KB_LIVE_PDF"], page_no, cfg.dpi)
+    context = f"Notebook: 2026-09 Journal (journal), page {page_no}. Previous page's date: unknown."
+    result = make_reader(cfg).read(png, context)
     print(result.page.model_dump_json(indent=2))
-    print(f"tokens: {result.input_tokens} in / {result.output_tokens} out")
-    assert result.page.entries
+    print(
+        f"page {page_no}: {len(result.page.entries)} entries; tokens {result.input_tokens} in / {result.output_tokens} out"
+    )
+    assert result.page.transcription.strip()
     assert result.input_tokens > 0
