@@ -19,7 +19,7 @@ def build_server(cfg, store, embedder) -> MCPServer:
 
     @mcp.tool()
     def decisions(project: str | None = None, since: str | None = None) -> list[dict]:
-        """Decisions (◇), optionally for one project slug and/or since a YYYY-MM-DD date."""
+        """Decisions (△), optionally for one project slug and/or since a YYYY-MM-DD date."""
         return queries.decisions(store, project=project, since=since)
 
     @mcp.tool()

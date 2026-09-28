@@ -22,7 +22,7 @@ Bullets (what the line is):
 - • task the writer owns -> bullet "task", owner null
 - → task someone else owns, followed by their initials (e.g. "→ JM benchmark") -> bullet "delegated", owner "JM"
 - ○ event: a meeting header like "○ 10:00 Design review: ingest · KP JM RS" or something that happened -> bullet "event"
-- ◇ decision -> bullet "decision"
+- △ decision (older pages may use ◇ for the same thing) -> bullet "decision"
 - ? open question or risk -> bullet "question"
 - – note or fact -> bullet "note"
 Signifiers (left of the margin line):

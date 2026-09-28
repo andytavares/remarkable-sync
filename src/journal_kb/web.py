@@ -33,7 +33,7 @@ HTML = """<!doctype html>
 <div id="results"></div>
 </main>
 <script>
-const SYMBOL = {task:"•", delegated:"→", event:"○", decision:"◇", question:"?", note:"–"};
+const SYMBOL = {task:"•", delegated:"→", event:"○", decision:"△", question:"?", note:"–"};
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 document.getElementById("f").addEventListener("submit", async ev => {
   ev.preventDefault();

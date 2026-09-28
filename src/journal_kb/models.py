@@ -6,7 +6,7 @@ Bullet = Literal["task", "delegated", "event", "decision", "question", "note"]
 State = Literal["open", "done", "migrated", "scheduled", "dropped"]
 Confidence = Literal["high", "medium", "low"]
 
-SYMBOL = {"task": "•", "delegated": "→", "event": "○", "decision": "◇", "question": "?", "note": "–"}
+SYMBOL = {"task": "•", "delegated": "→", "event": "○", "decision": "△", "question": "?", "note": "–"}
 
 
 class Entry(BaseModel):

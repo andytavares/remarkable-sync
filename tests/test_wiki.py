@@ -48,7 +48,7 @@ def test_journal_day_page_has_frontmatter_meeting_sections_and_source_links(cfg)
     assert "date_updated: 2026-09-25" in text
     assert "sources: [raw/notebooks/2026-09 Journal/20260924-080000.pdf]" in text
     assert f"## {MEETING}" in text
-    assert "◇ token bucket per tenant" in text
+    assert "△ token bucket per tenant" in text
     assert "→ JM load test 10x burst (due 2026-09-26)" in text
     assert "[[ingest]]" in text
     assert "raw/notebooks/2026-09 Journal/20260924-080000.pdf#page=1" in text

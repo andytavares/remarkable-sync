@@ -141,7 +141,7 @@ class WikiWriter:
             day = e["date"] or "undated"
             rows.append(f"| {day} | {_cell(e['text'])} | {project} | [[{day}]] |")
         self._write_insight(
-            "decision-log", "Decision log", "Every ◇ decision from the journal, newest first.", rows, today
+            "decision-log", "Decision log", "Every △ decision from the journal, newest first.", rows, today
         )
 
     def _write_signals(self, signals: list[dict], today: str) -> None:

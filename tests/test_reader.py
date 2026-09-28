@@ -45,8 +45,12 @@ def test_incomplete_reads_raise_instead_of_returning_partial_pages(stop_reason):
         reader.read(b"png", "ctx")
 
 
+def test_key_prompt_still_reads_the_old_diamond_as_a_decision():
+    assert "◇" in KEY_PROMPT.split("△ decision")[1].split("\n")[0]
+
+
 def test_key_prompt_names_every_symbol_in_the_key():
-    for symbol in ["•", "→", "○", "◇", "?", "–", "!", "*", "×", ">", "<", "~~~"]:
+    for symbol in ["•", "→", "○", "△", "?", "–", "!", "*", "×", ">", "<", "~~~"]:
         assert symbol in KEY_PROMPT
 
 

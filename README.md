@@ -200,7 +200,7 @@ follow-up?" The server exposes:
 |---|---|
 | `search_notes(query, k, since)` | Semantic search over every bullet, 1:1s included |
 | `open_tasks(owner)` | Your open • tasks; with initials (`"JM"`), what that person owes you |
-| `decisions(project, since)` | ◇ decisions, optionally for one project slug |
+| `decisions(project, since)` | △ decisions, optionally for one project slug |
 | `signals(since)` | ! signals |
 | `page(page_id)` | A page's full transcription, events, and PDF location |
 
@@ -251,7 +251,7 @@ It follows the wiki's own rules (`llm-wiki/CLAUDE.md`):
 |---|---|---|
 | `wiki/journal/YYYY-MM-DD.md` | One page per journal day: meetings as sections, one line per bullet in Key notation, `[[project]]` links, source links to the PDF page, transcription callouts | Every ingest that changed something |
 | `wiki/journal/digest.md` | The latest digest | Every digest run |
-| `wiki/insights/decision-log.md` | Every ◇, newest first, with project and day links | Every ingest that changed something |
+| `wiki/insights/decision-log.md` | Every △, newest first, with project and day links | Every ingest that changed something |
 | `wiki/insights/signals.md` | Every !, newest first | Every ingest that changed something |
 | `wiki/projects/<slug>.md` | A "Decisions from meetings" block, **only if that project page already exists** | Block between `<!-- journal-kb:decisions:start/end -->` markers |
 | `wiki/index.md` | A "Journal" table between `<!-- journal-kb:start/end -->` markers; `date_updated` bumped | Every ingest that changed something |
@@ -276,7 +276,7 @@ PageRead
 ├── date            YYYY-MM-DD (or null; ingest carries the previous page's date forward)
 ├── events[]        time, title, attendee initials          ← ○ lines
 ├── entries[]       one per bullet line
-│   ├── bullet      task • | delegated → | event ○ | decision ◇ | question ? | note –
+│   ├── bullet      task • | delegated → | event ○ | decision △ | question ? | note –
 │   ├── signal      !            priority   *
 │   ├── state       open | done × | migrated > | scheduled < | dropped (struck through)
 │   ├── text        the words, unexpanded
