@@ -56,10 +56,12 @@ def test_key_prompt_names_every_symbol_in_the_key():
     reason="set JOURNAL_KB_LIVE_PDF to a real journal PDF to call the Claude API",
 )
 def test_live_read_of_a_real_journal_page():
-    import anthropic
+    from journal_kb.config import load_config
+    from journal_kb.reader import make_reader
 
-    png = next(render_pages(os.environ["JOURNAL_KB_LIVE_PDF"], 150)).png
-    result = ClaudeReader(anthropic.Anthropic(), "claude-sonnet-5").read(png, "Page 1 of a bullet journal.")
+    cfg = load_config()
+    png = next(render_pages(os.environ["JOURNAL_KB_LIVE_PDF"], cfg.dpi)).png
+    result = make_reader(cfg).read(png, "Notebook: 2026-09 Journal (journal), page 1. Previous page's date: unknown.")
     print(result.page.model_dump_json(indent=2))
     print(f"tokens: {result.input_tokens} in / {result.output_tokens} out")
     assert result.page.entries

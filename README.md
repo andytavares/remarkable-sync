@@ -128,8 +128,10 @@ how well Claude reads *your* handwriting, what a page costs, and what Drive does
    `2026-09 Journal (1).pdf` (either works; this just answers the open question).
 3. **Read one page and look at the result:**
    ```bash
-   JOURNAL_KB_LIVE_PDF="$HOME/Google Drive/My Drive/2026-09 Journal.pdf" uv run pytest -k live -s
+   JOURNAL_KB_LIVE_PDF="$HOME/Google Drive/My Drive/2026-09 Journal.pdf" uv run pytest -k live_read -s
    ```
+   This uses the same credential lookup as the pipeline, so set up the [Claude credential](#claude-credential)
+   first. Without one it fails with `Could not resolve authentication method`.
 4. **Run the whole pipeline once:**
    ```bash
    uv run journal-kb run
