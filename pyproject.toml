@@ -29,6 +29,10 @@ dev = [
     "ruff>=0.16.9",
 ]
 
+[tool.uv]
+# Nothing published in the last 14 days resolves (https://docs.astral.sh/uv/concepts/resolution/#dependency-cooldowns).
+exclude-newer = "2 weeks"
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 filterwarnings = ["ignore:builtin type swig:DeprecationWarning"]

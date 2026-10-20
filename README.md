@@ -72,11 +72,13 @@ Desktop syncing `My Drive`, and a Claude API credential.
 
 ```bash
 cd ~/Desktop/journal-kb
-uv sync
+uv sync --locked
 ollama pull nomic-embed-text
 mkdir -p ~/.config/journal-kb
 cp config.example.toml ~/.config/journal-kb/config.toml
 ```
+
+`--locked` installs exactly what `uv.lock` lists, each file checked against its hash, and fails if the lockfile is out of date. `pyproject.toml` sets `exclude-newer = "2 weeks"`, so `uv lock` and `uv add` never pick a version published in the last 14 days ([uv: dependency cooldowns](https://docs.astral.sh/uv/concepts/resolution/#dependency-cooldowns)).
 
 The command is then available as `uv run journal-kb` from this folder, or directly as
 `~/Desktop/journal-kb/.venv/bin/journal-kb` from anywhere.
@@ -326,9 +328,9 @@ fix, try `claude-opus-5`.
 ## Development
 
 ```bash
-uv run pytest                 # 46 tests; the live Claude test is skipped unless JOURNAL_KB_LIVE_PDF is set
-uv run ruff check .
-uv run ruff format --check .
+uv run --locked pytest        # 48 tests; the live Claude test is skipped unless JOURNAL_KB_LIVE_PDF is set
+uv run --locked ruff check .
+uv run --locked ruff format --check .
 ```
 
 | File | Role |
